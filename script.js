@@ -260,6 +260,7 @@ function initDonationForm() {
 
 function initVolunteerForm() {
     const form = document.getElementById("volunteerForm");
+    const error = document.getElementById("volError");
     const success = document.getElementById("volSuccess");
 
     form.addEventListener("submit", (e) => {
@@ -270,7 +271,12 @@ function initVolunteerForm() {
         const phone = document.getElementById("volPhone").value;
         const role = document.getElementById("volRole").value;
 
-        if (!name || !email || !phone || !role) return;
+        error.textContent = "";
+
+        if (!name || !email || !phone || !role) {
+            error.textContent = "Please fill all required fields.";
+            return;
+        }
 
         form.style.display = "none";
         success.style.display = "block";
